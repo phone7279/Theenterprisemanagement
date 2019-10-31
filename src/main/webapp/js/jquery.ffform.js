@@ -79,7 +79,7 @@
 
                     e.preventDefault();
                     e.stopImmediatePropagation();
-                    validationResult = '<ul id="validation-list">';
+                    validationResult = '<ul id="validation-list" />';
                     validate();
                     if (!isValid) {
                         validationResult += '</ul>';

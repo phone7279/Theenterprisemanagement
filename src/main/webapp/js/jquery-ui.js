@@ -9979,7 +9979,8 @@ $.widget( "ui.dialog", {
 			}
 		});
 
-		uiDialogTitle = $("<span>")
+		// language=HTML
+        uiDialogTitle = $('<span>')
 			.uniqueId()
 			.addClass("ui-dialog-title")
 			.prependTo( this.uiDialogTitlebar );

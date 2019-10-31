@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.lw.fankui.FankuiEntity" table="fankui" schema="test">
+        <id name="id" column="id">
+            <generator class="native" />
+        </id>
+        <property name="name" column="name"/>
+        <property name="email" column="email"/>
+        <property name="phone" column="phone"/>
+        <property name="message" column="message"/>
+        <property name="jEmail" column="j_email"/>
+        <property name="jMessage" column="j_message"/>
+    </class>
+</hibernate-mapping>
