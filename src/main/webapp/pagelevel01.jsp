@@ -21,7 +21,7 @@
         <h3>
             客服</h3>
         <a href="pagelevel01.jsp" class="submit active">在线客服</a><br>
-        <a href="pagelevel02.jsp" class="submit">常见问题</a><br>
+        <a href="PL03S!selected.action" class="submit">常见问题</a><br>
         <a href="pagelevel03.jsp" class="submit">反馈</a></div>
     <section id="getintouch">
         <div class="container" style="border-bottom: 0;">

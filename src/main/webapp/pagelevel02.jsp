@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@page language="java" pageEncoding="UTF-8" %>
+<%@taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,7 +19,7 @@
             客服</h3>
        
         <a href="pagelevel01.jsp" class="submit">在线客服</a><br>
-        <a href="pagelevel02.jsp" class="submit active">常见问题</a><br>
+        <a href="PL03S!selected.action" class="submit active">常见问题</a><br>
         <a href="pagelevel03.jsp" class="submit">反馈</a>
     </div>
     <section id="getintouch" class="rotateInUpLeft animated">
@@ -25,10 +27,11 @@
             <h1>
                 <span>常见问题</span>
             </h1>
+            <s:iterator value="list">
+                邮箱：<s:property value="[0].email" /><br/>
+                问题：<s:property value="[0].message" /><br/>
+            </s:iterator>
         </div>
-		
-		
-		
     </section>
 </body>
 </html>

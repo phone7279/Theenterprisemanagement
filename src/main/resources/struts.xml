@@ -11,8 +11,11 @@
         <action name="PL01" class="com.lw.action.PL01">
             <result name="success">/pagelevel01.jsp</result>
         </action>
-        <action name="PL02" class="com.lw.action.PL02">
-            <result name="success">/pagelevel01.jsp</result>
+        <action name="PL03" class="com.lw.action.PL03">
+           <result name="success">/pagelevel02.jsp</result>
+        </action>
+        <action name="PL03S" class="com.lw.action.PL03" method="selected">
+            <result name="selected">/pagelevel02.jsp</result>
         </action>
     </package>
 </struts>

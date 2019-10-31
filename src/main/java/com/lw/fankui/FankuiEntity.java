@@ -6,17 +6,17 @@ import javax.persistence.*;
 @Table(name = "fankui", schema = "test")
 public class FankuiEntity {
     private int id;
-    private String name;
-    private String email;
-    private Integer phone;
-    private String message;
-    private String jEmail;
-    private String jMessage;
+    private String name = null;
+    private String email = null;
+    private String phone = null;
+    private String message = null;
+    private String jEmail = null;
+    private String jMessage = null;
 
     public FankuiEntity() {
     }
 
-    public FankuiEntity(String name, String email, Integer phone, String message) {
+    public FankuiEntity(String name, String email, String phone, String message) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -55,11 +55,11 @@ public class FankuiEntity {
 
     @Basic
     @Column(name = "phone")
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

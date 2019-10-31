@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class FankuiDemo {
-    public boolean insert(String name, String email, int phone, String message) {
+    public boolean insert(String name, String email, String phone, String message) {
         Configuration cfg = new Configuration();
 
         cfg.configure();
@@ -31,7 +31,7 @@ public class FankuiDemo {
         return true;
     }
 
-    public void selected() {
+    public List<FankuiEntity> selected() {
         Configuration cfg = new Configuration();
 
         cfg.configure();
@@ -46,7 +46,11 @@ public class FankuiDemo {
 
         List<FankuiEntity> list = query.list();
 
-        
+        session.close();
+
+        sessionFactory.close();
+
+        return list;
 
     }
 

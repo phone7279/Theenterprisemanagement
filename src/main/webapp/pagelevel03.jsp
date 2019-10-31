@@ -17,7 +17,7 @@
             客服</h3>
        
         <a href="pagelevel01.jsp" class="submit">在线客服</a><br>
-        <a href="pagelevel02.jsp" class="submit">常见问题</a><br>
+        <a href="PL03S!selected.action" class="submit">常见问题</a><br>
         <a href="pagelevel03.jsp" class="submit active">反馈</a>
     </div>
     <section id="getintouch" class="fadeInRightBig animated">
@@ -28,7 +28,7 @@
         </div>
         <div class="container">
 
-            <form class="contact" action="#" method="post" id="form">
+            <form class="contact" action="PL03.action" method="post" id="form">
             <div class="row clearfix">
                 <div class="lbl">
                     <label for="name">
@@ -65,7 +65,8 @@
                         <font color="red">*</font> 问题</label>
                 </div>
                 <div class="ctrl">
-                    <textarea id="message" name="message" rows="6" cols="10" style="resize: none;"></textarea>
+                    <input type="text" name="message" id="message"/>
+                    <%--<textarea id="message" name="message" rows="6" cols="10" style="resize: none;"></textarea>--%>
                 </div>
             </div>
             <div class="row  clearfix">
