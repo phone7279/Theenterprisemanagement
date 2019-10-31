@@ -20,7 +20,7 @@
     <div class="demos-buttons">
         <h3>
             客服</h3>
-        <a href="pagelevel01.jsp" class="submit active">在线客服</a><br>
+        <a href="PL01S!selected.action" class="submit active">在线客服</a><br>
         <a href="PL03S!selected.action" class="submit">常见问题</a><br>
         <a href="pagelevel03.jsp" class="submit">反馈</a></div>
     <section id="getintouch">
@@ -31,9 +31,15 @@
             <form class="contact" action="PL01.action" method="post" id="form">
                 <div class="row clearfix">
                     <div class="ctrl">
-                        <s:iterator value="list" status="st">
-                            <s:if test="#st.odd">(<% out.print(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())); %>)&nbsp;&nbsp;我：</s:if><s:else>(<% out.print(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())); %>)小E：</s:else><s:property/><br>
-                        </s:iterator>
+                        <font face="楷体" size="5">
+                            <s:iterator value="list" status="st">
+                            <s:if test="#st.index%4==0"><b>我&nbsp;(<s:property />):</b></s:if>
+                            <s:elseif test="#st.index%4==1"><s:property /><br/></s:elseif>
+                            <s:elseif test="#st.index%4==2"><b>小E(<s:property />):</b></s:elseif>
+                            <s:elseif test="#st.index%4==3"><s:property /><br/></s:elseif>
+                            </s:iterator>
+                        </font>
+                        <font size="5" color="#dcdcdc"><s:property value="st" /></font>
                     </div>
                 </div>
                 <div class="row clearfix">

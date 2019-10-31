@@ -17,5 +17,8 @@
         <action name="PL03S" class="com.lw.action.PL03" method="selected">
             <result name="selected">/pagelevel02.jsp</result>
         </action>
+        <action name="PL01S" class="com.lw.action.PL01" method="selected">
+            <result name="success">/pagelevel01.jsp</result>
+        </action>
     </package>
 </struts>

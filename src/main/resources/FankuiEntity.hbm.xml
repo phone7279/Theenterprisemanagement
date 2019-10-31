@@ -14,5 +14,6 @@
         <property name="message" column="message"/>
         <property name="jEmail" column="j_email"/>
         <property name="jMessage" column="j_message"/>
+        <property name="pass" column="pass"/>
     </class>
 </hibernate-mapping>

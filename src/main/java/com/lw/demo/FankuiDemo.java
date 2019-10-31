@@ -20,7 +20,7 @@ public class FankuiDemo {
 
         Transaction ta = session.beginTransaction();
 
-        FankuiEntity fankuiEntity = new FankuiEntity(name, email, phone, message);
+        FankuiEntity fankuiEntity = new FankuiEntity(name, email, phone, message, "未解决");
 
         session.save(fankuiEntity);
 

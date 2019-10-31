@@ -16,9 +16,9 @@ public class AutoReplyDemo {
         Session session = sessionFactory.openSession();
         Transaction ta = session.beginTransaction();
 
-        String hql = "from AutoReplyEntity s where s.mReceive=:receive";
+        String hql = "from AutoReplyEntity s where s.mReceive like :receive";
         Query query = session.createQuery(hql);
-        query.setString("receive", Receive);
+        query.setString("receive", ("%"+Receive+"%"));
         List<AutoReplyEntity> list = query.list();
         String string = null;
         for (AutoReplyEntity a:list){

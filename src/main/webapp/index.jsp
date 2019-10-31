@@ -9,30 +9,37 @@
 <title>
     机器人首页
 </title>
+    <script type="text/javascript">
+        function validate_email(field,alerttxt)
+        {
+            with (field)
+            {
+                apos=value.indexOf("@")
+                dotpos=value.lastIndexOf(".")
+                if (apos<1||dotpos-apos<2)
+                {alert(alerttxt);return false}
+                else {return true}
+            }
+        }
+
+        function validate_form(thisform)
+        {
+            with (thisform)
+            {
+                if (validate_email(email,"Not a valid e-mail address!")==false)
+                {email.focus();return false}
+            }
+        }
+    </script>
 </head>
+
 <body>
-<table border="0" width="100%">
-    <tr>
-        <td width="50%">
-            <form action="PL02.action" method="post" name="WenTi">
-                <textarea style="width:600px; height:200px; resize: none;" disabled ><s:property value="aa" /></textarea><br>
-                常见问题：
-                <input type="submit" value="#" name="c1">
-                <input type="submit" value="#" name="c2">
-                <input type="submit" value="#" name="c3">
-                <select name="c4">
-                    <option value="" selected="#" disabled>更多...</option>
-                    <option value="">A</option>
-                    <option value="">B</option>
-                </select>
-                <br>
-                <input type="text" name="aa">
-                <input type="submit" value="发送">
-            </form>
-        </td>
-    </tr>
-</table>
-<a href="pagelevel01.jsp">fadsfasdfadsfad</a>
+<form action="submitpage.htm"onsubmit="return validate_form(this);" method="post">
+    Email: <input type="text" name="email" size="30">
+    <input type="submit" value="Submit">
+</form>
+
+<a href="PL01S!selected.action">fadsfasdfadsfad</a>
 </body>
 
 </html>

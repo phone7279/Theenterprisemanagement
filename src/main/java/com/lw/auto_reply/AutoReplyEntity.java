@@ -9,6 +9,15 @@ public class AutoReplyEntity {
     private String mReceive;
     private String mSend;
 
+    public AutoReplyEntity() {
+    }
+
+    public AutoReplyEntity(int id, String mReceive, String mSend) {
+        this.id = id;
+        this.mReceive = mReceive;
+        this.mSend = mSend;
+    }
+
     @Id
     @Column(name = "id")
     public int getId() {
