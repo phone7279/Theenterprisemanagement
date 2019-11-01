@@ -12,25 +12,15 @@ public class FankuiEntity {
     private String message = null;
     private String jEmail = null;
     private String jMessage = null;
-    private String pass = null;
 
     public FankuiEntity() {
     }
 
-    public FankuiEntity(String name, String email, String phone, String message, String pass) {
+    public FankuiEntity(String name, String email, String phone, String message) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.message = message;
-        this.pass = pass;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
     }
 
     @Id

@@ -20,5 +20,11 @@
         <action name="PL01S" class="com.lw.action.PL01" method="selected">
             <result name="success">/pagelevel01.jsp</result>
         </action>
+        <action name="PL03G" class="com.lw.action.PL03" method="go">
+            <result name="success">//pagelevel04.jsp</result>
+        </action>
+        <action name="PL03U" class="com.lw.action.PL03" method="update">
+            <result name="success" type="redirect">/PL03S.action</result>
+        </action>
     </package>
 </struts>

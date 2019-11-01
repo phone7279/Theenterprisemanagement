@@ -1,5 +1,4 @@
-﻿<%@ page import="com.lw.fankui.FankuiEntity" %>
-<%@page language="java" pageEncoding="UTF-8" %>
+﻿<%@page language="java" pageEncoding="UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,24 +29,28 @@
             </h1>
 
             <table border="0" width="100%">
-                <s:iterator value="list">
+                <s:iterator value="list" var="fankuiEntity">
                     <tr>
-                        <td colspan="2"><b>用户&nbsp;(<s:property value="[0].email" />)&nbsp;问:</b></td>
+                        <td colspan="2"><s:if test="%{#fankuiEntity.jMessage == null}"><font color="red">【待解决】</font></s:if><s:else><font color="green">【已解决】</font></s:else><br/>用户(<s:property value="[0].email" />):</td>
                     </tr>
                     <tr>
-                        <td width="5%"></td><td width="95%"><s:property value="[0].message" /></td>
+                        <td width="5%"></td><td width="95%"><b><s:property value="[0].message" /></b></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><b>【<s:property value="[0].pass" />】热心人士(<s:property value="[0].jEmail" />)&nbsp;的回复:</b></td>
+                        <td colspan="2"><s:if test="%{#fankuiEntity.jMessage == null}"></s:if><s:else><font color="green">热心人士(<s:property value="[0].jEmail" />)回复:</font></s:else></td>
                     </tr>
                     <tr>
-                        <td width="5%"></td><td width="95%"><s:property value="[0].jMessage" /></td>
+                        <td width="5%"></td><td width="95%"><b><s:property value="[0].jMessage" /></b></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="right">
                             <div class="row  clearfix">
                                 <div class="span10 offset2">
-                                    <input type="submit" name="submit" id="submit" class="submit" value="🙋‍我来回答" align="right" onclick="javascript:alert('该功能未完善')" />
+                                    <s:form action="PL03G!go.action" METHOD="post">
+                                        <s:hidden value="%{#fankuiEntity.id}" name="str1" />
+                                        <s:hidden value="%{#fankuiEntity.message}" name="str2" />
+                                        <input type="submit" name="submit" id="submit" class="submit" value="🙋‍我来回答" align="right" />
+                                    </s:form>
                                 </div>
                             </div>
                         </td>

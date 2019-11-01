@@ -14,9 +14,44 @@ public class PL03 extends ActionSupport {
     private String email = null;
     private String phone = null;
     private String message = null;
+    private String jEmail = null;
+    private String jMessage = null;
     private FankuiDemo fankuiDemo = null;
-    public List<FankuiEntity> list;
+    private List<FankuiEntity> list;
+    private int str1 = 1;
+    private String str2 = null;
 
+    public int getStr1() {
+        return str1;
+    }
+
+    public void setStr1(int str1) {
+        this.str1 = str1;
+    }
+
+    public String getjEmail() {
+        return jEmail;
+    }
+
+    public void setjEmail(String jEmail) {
+        this.jEmail = jEmail;
+    }
+
+    public String getjMessage() {
+        return jMessage;
+    }
+
+    public void setjMessage(String jMessage) {
+        this.jMessage = jMessage;
+    }
+
+    public String getStr2() {
+        return str2;
+    }
+
+    public void setStr2(String str2) {
+        this.str2 = str2;
+    }
     public String getName() {
         return name;
     }
@@ -77,6 +112,16 @@ public class PL03 extends ActionSupport {
         }
         this.list = list1;
         return "selected";
+    }
+
+    public String update(){
+        fankuiDemo = new FankuiDemo();
+        fankuiDemo.update(str1, jEmail, jMessage);
+        return SUCCESS;
+    }
+
+    public String go() {
+        return SUCCESS;
     }
 
 }
