@@ -37,7 +37,7 @@
                         <td width="5%"></td><td width="95%"><b><s:property value="[0].message" /></b></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><s:if test="%{#fankuiEntity.jMessage == null}"></s:if><s:else><font color="green">热心人士(<s:property value="[0].jEmail" />)回复:</font></s:else></td>
+                        <td colspan="2"><s:if test="%{#fankuiEntity.jMessage == null}"></s:if><s:else>热心人士(<s:property value="[0].jEmail" />)回复:</s:else></td>
                     </tr>
                     <tr>
                         <td width="5%"></td><td width="95%"><b><s:property value="[0].jMessage" /></b></td>
