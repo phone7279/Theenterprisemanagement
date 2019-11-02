@@ -46,14 +46,14 @@ public class PL01 extends ActionSupport {
     }
 
     public String execute() {
-        AutoReplyDemo autoReplyDemo = new AutoReplyDemo();
-        String send = autoReplyDemo.selected(this.wt);
-        ActionContext actionContext = ActionContext.getContext();
-        List list = (List) actionContext.getApplication().get("List");
-        if(list == null){
-            list = new ArrayList();
-        }
-        String s = new SimpleDateFormat("hh:mm:ss").format(new Date());
+            AutoReplyDemo autoReplyDemo = new AutoReplyDemo();
+            String send = autoReplyDemo.selected(this.wt);
+            ActionContext actionContext = ActionContext.getContext();
+            List list = (List) actionContext.getApplication().get("List");
+            if(list == null){
+                list = new ArrayList();
+            }
+            String s = new SimpleDateFormat("hh:mm:ss").format(new Date());
         list.add(s);
         list.add(this.wt);
         list.add(s);
