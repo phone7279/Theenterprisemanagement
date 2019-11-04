@@ -5,7 +5,7 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <constant name="struts.devMode" value="true" />
+    <!--<constant name="struts.devMode" value="true" />-->
     <constant name="struts.enable.DynamicMethodInvocation" value="true" />
     <package name="default" namespace="/" extends="struts-default">
         <action name="PL01" class="com.lw.action.PL01">
@@ -25,6 +25,9 @@
         </action>
         <action name="PL03U" class="com.lw.action.PL03" method="update">
             <result name="success" type="redirect">/PL03S.action</result>
+        </action>
+        <action name="PL02" class="com.lw.action.PL02" method="execute">
+            <result name="success">/pagelevel05.jsp</result>
         </action>
     </package>
 </struts>
