@@ -18,7 +18,7 @@
 <%--<body class="flipInX animated">--%>
 <body>
 <div class="demos-buttons">
-    <h3>博客</h3>
+    <h3>客服</h3>
     <a href="PL01S!selected.action" class="submit active">在线客服</a><br>
     <a href="PL03S!selected.action" class="submit">常见问题</a><br>
     <a href="pagelevel03.jsp" class="submit">反馈</a></div>
