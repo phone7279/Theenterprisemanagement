@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 
 public class PL01 extends ActionSupport {
-
     private String wt;
     private List list;
     private String st;

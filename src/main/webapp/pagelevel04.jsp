@@ -3,23 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script type="text/javascript">
-        function validate_required(field,alerttxt)
-        {
-            with (field)
-            {
-                if (value==null||value=="")
-                {alert(alerttxt);return false}
-                else {return true}
+        function validate_required(field, alerttxt) {
+            with (field) {
+                if (value == null || value == "") {
+                    alert(alerttxt);
+                    return false
+                }
+                else {
+                    return true
+                }
             }
         }
-        function validate_form(thisform)
-        {
-            with (thisform)
-            {
-                if (validate_required(name,"昵称不能为空！")==false)
-                {name.focus();return false}
-                if(validate_required(message, "问题不能为空！")==false)
-                {message.focus();return false}
+
+        function validate_form(thisform) {
+            with (thisform) {
+                if (validate_required(name, "昵称不能为空！") == false) {
+                    name.focus();
+                    return false
+                }
+                if (validate_required(message, "问题不能为空！") == false) {
+                    message.focus();
+                    return false
+                }
             }
         }
     </script>
@@ -42,7 +47,8 @@
     </div>
     <div class="container">
 
-        <form class="contact" action="PL03U!update.action" method="post" id="form" onsubmit="return validate_form(this);">
+        <form class="contact" action="PL03U!update.action" method="post" id="form"
+              onsubmit="return validate_form(this);">
             <div class="row clearfix">
                 <div class="lbl">
                     <label for="message">
@@ -50,9 +56,10 @@
                 </div>
                 <div class="ctrl">
                     <s:iterator value="str1" var="str1">
-                    <s:hidden value="%{#str1}" name="str1" />
+                        <s:hidden value="%{#str1}" name="str1"/>
                     </s:iterator>
-                    <textarea id="message" name="message" rows="6" cols="10" style="resize: none;" disabled><s:property value="str2" /> </textarea>
+                    <textarea id="message" name="message" rows="6" cols="10" style="resize: none;" disabled><s:property
+                            value="str2"/> </textarea>
                 </div>
             </div>
             <div class="row clearfix">
@@ -77,7 +84,8 @@
             <div class="row  clearfix">
                 <div class="span10 offset2">
                     <input type="submit" name="submit" id="submit" class="submit" value="确	定">
-                    <input type="button" name="submit" id="back" class="submit" value="取    消" onclick="javascript:history.back(-1);">
+                    <input type="button" name="submit" id="back" class="submit" value="取    消"
+                           onclick="javascript:history.back(-1);">
                 </div>
             </div>
         </form>
