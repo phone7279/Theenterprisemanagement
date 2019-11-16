@@ -46,19 +46,19 @@ public class PL01 extends ActionSupport {
     }
 
     public String execute() {
-            AutoReplyDemo autoReplyDemo = new AutoReplyDemo();
-            String send = autoReplyDemo.selected(this.wt);
-            ActionContext actionContext = ActionContext.getContext();
-            List list = (List) actionContext.getApplication().get("List");
-            if(list == null){
-                list = new ArrayList();
-            }
-            String s = new SimpleDateFormat("hh:mm:ss").format(new Date());
+        AutoReplyDemo autoReplyDemo = new AutoReplyDemo();
+        String send = autoReplyDemo.selected(this.wt);
+        ActionContext actionContext = ActionContext.getContext();
+        List list = (List) actionContext.getApplication().get("List");
+        if (list == null) {
+            list = new ArrayList();
+        }
+        String s = new SimpleDateFormat("hh:mm:ss").format(new Date());
         list.add(s);
         list.add(this.wt);
         list.add(s);
         list.add(send);
-        actionContext.getApplication().put("List",list);
+        actionContext.getApplication().put("List", list);
         this.list = list;
         return SUCCESS;
     }
@@ -66,13 +66,12 @@ public class PL01 extends ActionSupport {
     public String selected() {
         ActionContext actionContext = ActionContext.getContext();
         List list = (List) actionContext.getApplication().get("List");
-        if(list == null){
+        if (list == null) {
             list = new ArrayList();
         }
         this.list = list;
         RecommendDemo recommendDemo = new RecommendDemo();
-        String s = "小E亲切地跟你打了个招呼："+recommendDemo.RD();
-        this.st = s;
+        this.st = "小E亲切地跟你打了个招呼：" + recommendDemo.RD();
         return SUCCESS;
     }
 }

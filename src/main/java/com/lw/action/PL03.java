@@ -52,6 +52,7 @@ public class PL03 extends ActionSupport {
     public void setStr2(String str2) {
         this.str2 = str2;
     }
+
     public String getName() {
         return name;
     }
@@ -97,7 +98,7 @@ public class PL03 extends ActionSupport {
         boolean b = fankuiDemo.insert(name, email, phone, message);
         fankuiDemo = new FankuiDemo();
         List<FankuiEntity> list1 = fankuiDemo.selected();
-        if(list1.size() == 0 || list1 == null) {
+        if (list1.size() == 0 || list1 == null) {
             list1 = new ArrayList();
         }
         this.list = list1;
@@ -106,15 +107,14 @@ public class PL03 extends ActionSupport {
 
     public String selected() {
         fankuiDemo = new FankuiDemo();
-        List<FankuiEntity> list1 = fankuiDemo.selected();
-        if(list1.size() == 0 || list1 == null) {
-            list1 = new ArrayList();
-        }
-        this.list = list1;
+        //        if (list1.size() == 0 || list1 == null) {
+//            list1 = new ArrayList();
+//        }
+        this.list = fankuiDemo.selected();
         return "selected";
     }
 
-    public String update(){
+    public String update() {
         fankuiDemo = new FankuiDemo();
         fankuiDemo.update(str1, jEmail, jMessage);
         return SUCCESS;

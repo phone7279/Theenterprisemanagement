@@ -27,7 +27,7 @@ public class RecommendDemo {
 
         int id = (int)(Math.random()*(10)+1);
 
-        query.setInteger("id", id);
+        query.setParameter("id", id);
 
         List<RecommendEntity> list = query.list();
 

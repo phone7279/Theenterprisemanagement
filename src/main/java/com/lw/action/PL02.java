@@ -12,7 +12,7 @@ public class PL02 extends ActionSupport {
 
     public String execute() {
         DingDanDemo dingDanDemo = new DingDanDemo();
-        List list = (List)dingDanDemo.selected();
+        List list = (List) dingDanDemo.selected();
         return SUCCESS;
     }
 }
