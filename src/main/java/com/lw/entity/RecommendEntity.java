@@ -1,4 +1,4 @@
-package com.lw.recommend;
+package com.lw.entity;
 
 import javax.persistence.*;
 
@@ -7,6 +7,14 @@ import javax.persistence.*;
 public class RecommendEntity {
     private int id;
     private String content;
+
+    public RecommendEntity() {
+    }
+
+    public RecommendEntity(int id, String content) {
+        this.id = id;
+        this.content = content;
+    }
 
     @Id
     @Column(name = "id")

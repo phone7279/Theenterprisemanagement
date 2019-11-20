@@ -1,56 +1,106 @@
 package com.lw.action;
 
-import com.lw.demo.FankuiDemo;
-import com.lw.fankui.FankuiEntity;
+import com.lw.demo.TieZiDemo;
+import com.lw.entity.TieziEntity;
 import com.opensymphony.xwork2.ActionSupport;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PL03 extends ActionSupport {
 
-    private String name = null;
-    private String email = null;
-    private String phone = null;
-    private String message = null;
-    private String jEmail = null;
-    private String jMessage = null;
-    private FankuiDemo fankuiDemo = null;
-    private List<FankuiEntity> list;
-    private int str1 = 1;
-    private String str2 = null;
+    private String title, name, message, rName;
+    private int id, rid , sid;
+    private List<TieziEntity> list;
+    private TieZiDemo tieZiDemo;
+    private TieziEntity tieziEntity;
 
-    public int getStr1() {
-        return str1;
+    public String selectedTop() {
+        tieZiDemo = new TieZiDemo();
+        list = tieZiDemo.selectedTop();
+        return SUCCESS;
     }
 
-    public void setStr1(int str1) {
-        this.str1 = str1;
+    public String selectedLast() {
+        tieziEntity = new TieziEntity();
+        tieZiDemo = new TieZiDemo();
+        tieziEntity = tieZiDemo.selectedTop(id);
+        list = tieZiDemo.selectedLast(id);
+        return SUCCESS;
     }
 
-    public String getjEmail() {
-        return jEmail;
+    public String insertTop() {
+        tieZiDemo = new TieZiDemo();
+        tieZiDemo.insertTop(title, name, message);
+        return SUCCESS;
     }
 
-    public void setjEmail(String jEmail) {
-        this.jEmail = jEmail;
+    public String go() {
+        return SUCCESS;
     }
 
-    public String getjMessage() {
-        return jMessage;
+    public String go2() {
+        return SUCCESS;
     }
 
-    public void setjMessage(String jMessage) {
-        this.jMessage = jMessage;
+    public String insertLast() {
+        tieZiDemo = new TieZiDemo();
+        tieZiDemo.insertLast(name, message, id);
+        selectedLast();
+        return SUCCESS;
     }
 
-    public String getStr2() {
-        return str2;
+    public String insertLast2() {
+        tieZiDemo = new TieZiDemo();
+        tieZiDemo.insertLast2(name, message, id, rName);
+        selectedLast();
+        return SUCCESS;
     }
 
-    public void setStr2(String str2) {
-        this.str2 = str2;
+    public String delete() {
+        tieZiDemo = new TieZiDemo();
+        tieZiDemo.delete(sid);
+        selectedLast();
+        return SUCCESS;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
+    }
+
+    public String getrName() {
+        return rName;
+    }
+
+    public void setrName(String rName) {
+        this.rName = rName;
+    }
+
+    public TieziEntity getTieziEntity() {
+        return tieziEntity;
+    }
+
+    public void setTieziEntity(TieziEntity tieziEntity) {
+        this.tieziEntity = tieziEntity;
+    }
+
+    public List<TieziEntity> getList() {
+        return list;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setList(List<TieziEntity> list) {
+        this.list = list;
     }
 
     public String getName() {
@@ -61,22 +111,6 @@ public class PL03 extends ActionSupport {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getMessage() {
         return message;
     }
@@ -85,43 +119,19 @@ public class PL03 extends ActionSupport {
         this.message = message;
     }
 
-    public List<FankuiEntity> getList() {
-        return list;
+    public int getRid() {
+        return rid;
     }
 
-    public void setList(List<FankuiEntity> list) {
-        this.list = list;
+    public void setRid(int rid) {
+        this.rid = rid;
     }
 
-    public String execute() {
-        fankuiDemo = new FankuiDemo();
-        boolean b = fankuiDemo.insert(name, email, phone, message);
-        fankuiDemo = new FankuiDemo();
-        List<FankuiEntity> list1 = fankuiDemo.selected();
-        if (list1.size() == 0 || list1 == null) {
-            list1 = new ArrayList();
-        }
-        this.list = list1;
-        return SUCCESS;
+    public int getId() {
+        return id;
     }
 
-    public String selected() {
-        fankuiDemo = new FankuiDemo();
-        //        if (list1.size() == 0 || list1 == null) {
-//            list1 = new ArrayList();
-//        }
-        this.list = fankuiDemo.selected();
-        return "selected";
+    public void setId(int id) {
+        this.id = id;
     }
-
-    public String update() {
-        fankuiDemo = new FankuiDemo();
-        fankuiDemo.update(str1, jEmail, jMessage);
-        return SUCCESS;
-    }
-
-    public String go() {
-        return SUCCESS;
-    }
-
 }

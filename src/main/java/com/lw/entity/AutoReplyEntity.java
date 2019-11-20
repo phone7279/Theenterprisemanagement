@@ -1,4 +1,4 @@
-package com.lw.auto_reply;
+package com.lw.entity;
 
 import javax.persistence.*;
 

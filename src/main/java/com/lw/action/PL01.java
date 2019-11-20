@@ -1,16 +1,11 @@
 package com.lw.action;
 
-import com.lw.auto_reply.AutoReplyEntity;
 import com.lw.demo.AutoReplyDemo;
 import com.lw.demo.RecommendDemo;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import javafx.application.Application;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.awt.*;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,7 +47,7 @@ public class PL01 extends ActionSupport {
         if (list == null) {
             list = new ArrayList();
         }
-        String s = new SimpleDateFormat("hh:mm:ss").format(new Date());
+        String s = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm"));
         list.add(s);
         list.add(this.wt);
         list.add(s);

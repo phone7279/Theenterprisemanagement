@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<%@ page import="com.opensymphony.xwork2.ActionContext" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <script type="text/javascript">
@@ -14,36 +16,23 @@
             }
         }
 
-        function validate_email(field, alerttxt) {
-            with (field) {
-                apos = value.indexOf("@");
-                dotpos = value.lastIndexOf(".");
-                if (1 > apos || 2 > dotpos - apos) {
-                    alert(alerttxt);
-                    return false
-                }
-                else {
-                    return true
-                }
-            }
-        }
-
         function validate_form(thisform) {
             with (thisform) {
-                if (validate_email(email, "邮箱填写错误！") == false) {
+                if (validate_required(title, "标题不能为空！") == false) {
                     email.focus();
                     return false
                 }
-                if (validate_required(message, "问题不能为空！") == false) {
+                if (validate_required(message, "内容不能为空！") == false) {
                     message.focus();
                     return false
                 }
             }
+            alert("发送成功！");
         }
 
     </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>反馈</title>
+    <title>发帖</title>
     <link href="css/demo.css" rel="stylesheet" type="text/css">
     <script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
     <!--Framework-->
@@ -54,58 +43,46 @@
 </head>
 <body class="flipInX animated">
 <div class="demos-buttons">
-    <h3>客服</h3>
-
+    <% String string = (String) ActionContext.getContext().getApplication().get("name");
+        if (string == null) {%>
+    <script type="text/javascript">window.alert("您尚未登录，现在登陆！");
+    window.location.href = "login.jsp"; </script>
+    <%
+        } else {
+            out.print("欢迎您，" + string +" <a href='accountZX!disLogin.action' style='text-decoration-line: none'>注销</a>");
+       }
+    %>
+    <h3><a href="PL03ST!selectedTop.action" style="text-decoration-line:none;link: bleak;color: black">帖吧</a></h3>
+    <a href="PL03ST!selectedTop.action" class="submit">帖子</a><br>
+    <a href="pagelevel03.jsp" class="submit active">发帖</a><br/>
     <a href="PL01S!selected.action" class="submit">在线客服</a><br>
-    <a href="PL03S!selected.action" class="submit">常见问题</a><br>
-    <a href="pagelevel03.jsp" class="submit active">反馈</a>
+</div>
 </div>
 <section id="getintouch" class="fadeInRightBig animated">
     <div class="container" style="border-bottom: 0;">
         <h1>
-            <span>反馈</span>
+            <span>发帖</span>
         </h1>
     </div>
     <div class="container">
 
-        <form class="contact" action="PL03.action" method="post" id="form" onsubmit="return validate_form(this);">
+        <form class="contact" action="PL03IT!insertTop.action" method="post" id="form" onsubmit="return validate_form(this);">
+            <input type="hidden" value="<%=string%>" name="name"/>
             <div class="row clearfix">
                 <div class="lbl">
-                    <label for="name">
-                        名字</label>
+                    <label for="name">标题</label>
                 </div>
                 <div class="ctrl">
-                    <input type="text" id="name" name="name" data-required="true" data-validation="text"
-                           data-msg="Invalid Name" placeholder="Ex: LaiWei">
+                    <input type="text" id="name" name="title" data-required="true" data-validation="text"
+                           data-msg="Invalid Name" placeholder="标题">
                 </div>
             </div>
             <div class="row clearfix">
                 <div class="lbl">
-                    <label for="email">
-                        <font color="red">*</font> 邮箱</label>
+                    <label for="message">内容</label>
                 </div>
                 <div class="ctrl">
-                    <input type="text" id="email" name="email" data-required="true" data-validation="email"
-                           data-msg="Invalid E-Mail" placeholder="Ex: 1033076410@qq.com">
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="lbl">
-                    <label for="phone">
-                        电话</label>
-                </div>
-                <div class="ctrl">
-                    <input type="text" id="phone" name="phone" data-required="true" data-validation="custom"
-                           data-msg="Invalid Phone #" placeholder="Ex: 13827667279">
-                </div>
-            </div>
-            <div class="row clearfix">
-                <div class="lbl">
-                    <label for="message">
-                        <font color="red">*</font> 问题</label>
-                </div>
-                <div class="ctrl">
-                    <textarea id="message" name="message" rows="6" cols="10" style="resize: none;"></textarea>
+                    <textarea id="message" name="message" rows="10" cols="8" style="resize: none;"></textarea>
                 </div>
             </div>
             <div class="row  clearfix">

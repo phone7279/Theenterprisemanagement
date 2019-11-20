@@ -1,7 +1,7 @@
 <%@page language="java" pageEncoding="UTF-8" %>
 <html>
-
-<h1><a href="PL01S!selected.action" style="text-decoration-line: none;">入口</a></h1>
-<a href="PL02.action" style="text-decoration-line: none;">订单</a>
+<head>
+<script>window.location.href="PL03ST!selectedTop.action";</script>
+</head>
 
 </html>

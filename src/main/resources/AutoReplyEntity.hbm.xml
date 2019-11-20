@@ -1,11 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.lw.auto_reply.AutoReplyEntity" table="auto_reply" schema="test">
-        <id name="id" column="id"/>
+    <class name="com.lw.entity.AutoReplyEntity" table="auto_reply" schema="test">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
         <property name="mReceive" column="m_receive"/>
         <property name="mSend" column="m_send"/>
     </class>

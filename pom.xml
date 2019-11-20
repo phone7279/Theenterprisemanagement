@@ -20,12 +20,13 @@
         <spring.version>5.2.0.RELEASE</spring.version>
         <struts2.version>2.5.20</struts2.version>
         <hibernate.version>5.4.4.Final</hibernate.version>
-        <slf4j.version>1.7.25</slf4j.version>
-        <log4j.version>2.10.0</log4j.version>
+        <slf4j.version>1.7.28</slf4j.version>
+        <log4j.version>2.12.1</log4j.version>
         <shiro.version>1.4.0</shiro.version>
         <cxf.version>3.3.1</cxf.version>
         <c3p0.version>0.9.5.4</c3p0.version>
         <mysql.version>5.1.39</mysql.version>
+        <javax.el.version>2.2.4</javax.el.version>
     </properties>
     <!-- 锁定版本，struts2-2.5.17、spring5.2.0、hibernate5.4.4 -->
     <dependencyManagement>
@@ -255,6 +256,13 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- log end -->
 
         <!-- Javamail -->
@@ -325,7 +333,27 @@
             <artifactId>commons-dbcp2</artifactId>
             <version>2.6.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -363,5 +391,15 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>

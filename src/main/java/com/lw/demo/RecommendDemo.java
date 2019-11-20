@@ -1,27 +1,25 @@
 package com.lw.demo;
 
-import com.lw.fankui.FankuiEntity;
-import com.lw.recommend.RecommendEntity;
+import com.lw.entity.RecommendEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 
 public class RecommendDemo {
 
     public String RD() {
-        Configuration cfg = new Configuration();
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        cfg.configure();
-
-        SessionFactory sessionFactory = cfg.buildSessionFactory();
+        SessionFactory sessionFactory = (SessionFactory) applicationContext.getBean("sessionFactory");
 
         Session session = sessionFactory.openSession();
 
-        Transaction ta = session.beginTransaction();
+        Transaction transaction = session.beginTransaction();
 
         Query query =  session.createQuery("from RecommendEntity where id = :id");
 
@@ -30,6 +28,8 @@ public class RecommendDemo {
         query.setParameter("id", id);
 
         List<RecommendEntity> list = query.list();
+
+        transaction.commit();
 
         session.close();
 
