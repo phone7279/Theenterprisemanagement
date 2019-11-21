@@ -1,4 +1,4 @@
-﻿<%@ page import="com.opensymphony.xwork2.ActionContext" %>
+﻿<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page pageEncoding="UTF-8" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,11 +37,8 @@
 </head>
 <body class="bounceIn animated">
 <div class="demos-buttons">
-    <% String string = (String) ActionContext.getContext().getApplication().get("name");
-        if (string == null) out.print("<a href=\"login.jsp\">点击登录</a>！");
-        else
-            out.print("欢迎您，" + string + " <a href='accountZX!disLogin.action'>注销</a>");
-    %>
+    <c:if test="${sessionScope.name==null}"><a href='login.jsp' style='text-decoration-line: none'>点击登录</a></c:if>
+    <c:if test="${sessionScope.name!=null}">欢迎您，${sessionScope.name}&nbsp;<a href='accountZX!disLogin.action' style='text-decoration-line: none'>注销</a></c:if>
     <h3><a href="PL03ST!selectedTop.action" style="text-decoration-line:none;link: bleak;color: black">帖吧</a></h3>
     <a href="PL03ST!selectedTop.action" class="submit active">帖子</a><br>
     <a href="pagelevel03.jsp" class="submit">发帖</a><br/>
@@ -65,10 +62,11 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
-                        <s:form action="PL03SL!selectedLast" METHOD="post" name="SL">
+                        <form action="PL03SL!selectedLast" METHOD="post" name="SL">
                             <input type="hidden" value="<s:property value='%{#tiezi.getId()}'/>" name="id"/>
-                            <% if(string==null) out.print("<td> <input type=\"text\" style= \"background-color:transparent;border:0;\" name=\"t2\" value=\"查看详情\" disabled title=\"登陆后方可查看\" /> </td>");else out.print("<input type=\"submit\" value=\"查看详情\" style=\"background:transparent;\"/>");%>
-                        </s:form>
+                            <c:if test="${sessionScope.name==null}"><input type="text" style= "background-color:transparent;border:0;" name="t2" value="查看详情" disabled title="登陆后方可查看" /> </c:if>
+                            <c:if test="${sessionScope.name!=null}"><input type="submit" value="查看详情" style="background:transparent;"/></c:if>
+                        </form>
                     </td>
                 </tr>
                 <tr>

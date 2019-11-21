@@ -7,10 +7,9 @@ import com.opensymphony.xwork2.ActionSupport;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-public class PL01 extends ActionSupport {
+public class PL01 extends ActionSupport{
     private String wt;
     private List list;
     private String st;
@@ -42,8 +41,7 @@ public class PL01 extends ActionSupport {
     public String execute() {
         AutoReplyDemo autoReplyDemo = new AutoReplyDemo();
         String send = autoReplyDemo.selected(this.wt);
-        ActionContext actionContext = ActionContext.getContext();
-        List list = (List) actionContext.getApplication().get("List");
+        List list = (List) ActionContext.getContext().getSession().get("List");
         if (list == null) {
             list = new ArrayList();
         }
@@ -52,14 +50,13 @@ public class PL01 extends ActionSupport {
         list.add(this.wt);
         list.add(s);
         list.add(send);
-        actionContext.getApplication().put("List", list);
+        ActionContext.getContext().getSession().put("List",list);
         this.list = list;
         return SUCCESS;
     }
 
     public String selected() {
-        ActionContext actionContext = ActionContext.getContext();
-        List list = (List) actionContext.getApplication().get("List");
+        List list = (List) ActionContext.getContext().getSession().get("List");
         if (list == null) {
             list = new ArrayList();
         }
@@ -68,4 +65,5 @@ public class PL01 extends ActionSupport {
         this.st = "小E亲切地跟你打了个招呼：" + recommendDemo.RD();
         return SUCCESS;
     }
+
 }

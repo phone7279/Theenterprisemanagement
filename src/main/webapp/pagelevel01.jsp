@@ -1,5 +1,5 @@
 ﻿<%@page language="java" pageEncoding="UTF-8" %>
-<%@ page import="com.opensymphony.xwork2.ActionContext" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,16 +14,10 @@
     <!--End Framework-->
     <script src="js/jquery.ffform.js" type="text/javascript"></script>
 </head>
-<%--<body class="flipInX animated">--%>
 <body>
 <div class="demos-buttons">
-    <% String string = (String) ActionContext.getContext().getApplication().get("name");
-        if (string == null) {%>
-    <script type="text/javascript">window.alert("您尚未登录，现在登陆！");
-    window.location.href = "login.jsp"; </script>
-    <%
-        } else out.print("欢迎您，" + string +" <a href='accountZX!disLogin.action' style='text-decoration-line: none'>注销</a>");
-    %>
+    <c:if test="${sessionScope.name==null}"><script>window.alert("您尚未登录，现在登陆！");window.location.href = "login.jsp";</script></c:if>
+    <c:if test="${sessionScope.name!=null}">欢迎您，${sessionScope.name}&nbsp;<a href='accountZX!disLogin.action' style='text-decoration-line: none'>注销</a></c:if>
     <h3><a href="PL03ST!selectedTop.action" style="text-decoration-line:none;link: bleak;color: black">帖吧</a></h3>
     <a href="PL03ST!selectedTop.action" class="submit">帖子</a><br>
     <a href="pagelevel03.jsp" class="submit">发帖</a><br/>
